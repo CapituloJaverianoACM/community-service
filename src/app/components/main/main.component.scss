@@ -1,0 +1,32 @@
+@import 'src/ACM-theme.scss';
+
+
+#budget-slider{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#display_value{
+    font-family: Montserrat;
+    color: mat-color($ACM-theme-accent, default);
+    font-size: 80px;
+}
+
+#left{
+    border-right: 1px solid mat-color($ACM-theme-accent, default);
+}
+
+
+.section{
+    padding: 30px;
+}
+
+
+.subtitle{
+    font-size: large;
+    margin: 20px;
+}
+
+.text{
+    margin: 20px;
+}

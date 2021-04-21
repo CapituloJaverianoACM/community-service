@@ -1,0 +1,85 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$mat-blue-acm: (
+    50 : #e2f2f9,
+    100 : #b6def1,
+    200 : #86c8e7,
+    300 : #56b2dd,
+    400 : #31a2d6,
+    500 : #0d91cf,
+    600 : #0b89ca,
+    700 : #097ec3,
+    800 : #0774bd,
+    900 : #0362b2,
+    A100 : #dbedff,
+    A200 : #a8d3ff,
+    A400 : #75b8ff,
+    A700 : #5cabff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$mat-green-acm: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #20AD76,
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #1b5e20,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+
+
+$ACM-theme-primary: mat-palette($mat-blue-acm);
+$ACM-theme-accent:  mat-palette($mat-green-acm);
+
+$ACM-theme: mat-light-theme((
+  color: (
+    primary: $ACM-theme-primary,
+    accent: $ACM-theme-accent
+    )
+)
+);
+
+@include angular-material-theme($ACM-theme);

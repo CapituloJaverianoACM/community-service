@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "ACM-theme.scss";
+
+/*acm-blue background and white font*/
+.medium-button{
+    font-weight: lighter;
+    width: 100px;
+}
+
+.white-button{
+    color: mat-color($ACM-theme-primary);
+    background-color: white;
+    border: solid;
+    border-color: mat-color($ACM-theme-primary);
+}
+
+.blue-button{
+    color: white;
+    background-color: mat-color($ACM-theme-primary);
+    border: solid;
+    border-color: mat-color($ACM-theme-primary);
+}

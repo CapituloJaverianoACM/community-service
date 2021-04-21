@@ -1,0 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly stretch">
+
+  <!--LEFT PANE-->
+  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" >
+    <label class="subtitle"> <b>Calcula...</b></label>
+    <label class="text">¿Cuánto necesitas en total?</label>
+    <mat-slider   
+      thumbLabel
+      id="budget-slider"
+      min="1000" max="10000000000"
+      step="10000" value="1"
+      color="primary"
+      [displayWith]="formatLabel"
+      (input)="updateBudget($event)"></mat-slider>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+      <div>10.000</div>
+      <div>COP</div>
+      <div>100.000.000.000</div>
+    </div>
+
+
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >      
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecciona una causa</mat-label>
+        <mat-select>
+          <mat-option value="option">Salvar una ballena</mat-option>
+          <mat-option value="option">Darle de comer a un niño</mat-option>
+          <mat-option value="option">Darle educacion a un niño</mat-option>
+          <mat-option value="option">Construir un colegio</mat-option>
+          <mat-option value="option">Acabar con el hambre mundial</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        Agrega tu causa
+        <button mat-flat-button style="background-color: #20AD76; color: white;">+</button>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!--RIGHT PANE-->
+  <div class="section" fxLayout="column" fxFlex="50" fxLayoutAlign="space-around center">
+    <p color="accent" id="display_value"> {{display  | currency:'' : 'symbol' : '1.0-0'}} </p>
+    <span> Alcanza para {{result(display!)}} </span>
+  </div>
+
+</div>
