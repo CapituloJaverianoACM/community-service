@@ -24,3 +24,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: solid;
     border-color: mat-color($ACM-theme-primary);
 }
+
+.community-radio-group{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.community-radio-button{
+    margin: 5px;
+}
+
+.button-row {
+    display: flex;
+}
