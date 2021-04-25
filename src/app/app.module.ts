@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { FooterComponent } from './components/footer/footer.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
+import {MatRadioModule} from '@angular/material/radio';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import {MatDialogModule} from '@angular/material/dialog';
 
@@ -43,6 +44,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatDividerModule,
     MatIconModule,
+    MatRadioModule,
     FontAwesomeModule,
     MatDialogModule,
     ReactiveFormsModule,
