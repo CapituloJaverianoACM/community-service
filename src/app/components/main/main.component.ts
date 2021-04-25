@@ -1,9 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSliderChange } from '@angular/material/slider';
 import { Router } from '@angular/router';
 import { Cause } from 'src/app/model/cause';
 import { CurrencyService } from 'src/app/services/currency.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-main',
@@ -17,7 +20,7 @@ export class MainComponent implements OnInit {
   public showingCause = true;
   public minMoney = 10000;
   public maxMoney = 10000000000;
-  public display: number | null = 0;
+  public display: number = this.minMoney;
   public values: Cause[] = [{budget: 10000, name: 'una hamburguesa de Mc Donalds', currency: 'COP'},
                   {budget: 30000, name: 'una botella de 750ml de nectar', currency: 'COP'}];
 
@@ -60,7 +63,7 @@ export class MainComponent implements OnInit {
 
   addCause(): void{
     const dialogRef = this.dialog.open(DialogNewCauseComponent, {
-      width: '250px'
+      width: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -90,13 +93,23 @@ export class MainComponent implements OnInit {
 @Component({
   selector: 'dialog-new-cause',
   templateUrl: 'dialog_new_cause.html',
+  styleUrls: ['./main.component.scss']
+
 })
 export class DialogNewCauseComponent {
 
+  public form: FormGroup;
 
   public cause: Cause = {budget: 0, name: '', currency: 'COP'};
-  constructor(
-    public dialogRef: MatDialogRef<DialogNewCauseComponent>) {}
+  constructor(private fb: FormBuilder,
+              public dialogRef: MatDialogRef<DialogNewCauseComponent>) {
+
+      this.form = this.fb.group({
+        name: ['', Validators.required],
+        budget: ['', [Validators.required, Validators.min(0)]],
+        currency: ['', Validators.required]
+      });
+    }
 
   onNoClick(): void {
 
