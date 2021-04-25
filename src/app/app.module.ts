@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { MainComponent } from './components/main/main.component';
+import { DialogNewCauseComponent, MainComponent } from './components/main/main.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -18,7 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 
-import { faCoffee, fas } from '@fortawesome/free-solid-svg-icons';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -28,7 +28,8 @@ import { faCoffee, fas } from '@fortawesome/free-solid-svg-icons';
     AppComponent,
     ToolbarComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    DialogNewCauseComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +44,13 @@ import { faCoffee, fas } from '@fortawesome/free-solid-svg-icons';
     MatSelectModule,
     MatDividerModule,
     MatIconModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogNewCauseComponent
+  ],
 })
 export class AppModule { }

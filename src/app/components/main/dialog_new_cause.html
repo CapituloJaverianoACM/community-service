@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Nueva causa</h1>
+<div mat-dialog-content>
+  <p>Que nombre tendra tu causa?:</p>
+  <mat-form-field>
+    <mat-label>nombre</mat-label>
+    <input matInput [(ngModel)]="cause.name">
+  </mat-form-field>
+
+  <p>Cuanto necesitas?:</p>
+  <mat-form-field>
+    <mat-label>presupuesto</mat-label>
+    <input matInput [(ngModel)]="+cause.budget">
+  </mat-form-field>
+
+  <p>En que moneda?:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Moneda</mat-label>
+    <mat-select>
+      <mat-option value="option">COP</mat-option>
+      <mat-option value="option">USD</mat-option>
+
+    </mat-select>
+
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="cause" cdkFocusInitial>Ok</button>
+</div>

@@ -1,6 +1,6 @@
 export interface Cause {
-    value: number;
-    product: string;
+    budget: number;
+    name: string;
     currency: string;
 }
 

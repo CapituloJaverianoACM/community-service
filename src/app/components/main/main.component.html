@@ -1,7 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="space-evenly stretch">
 
   <!--LEFT PANE-->
-  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" >
+
+  <!--CAUSE-->
+  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" 
+    *ngIf="showingCause">
     <label class="subtitle"> <b>Calcula...</b></label>
     <label class="text">¿Cuánto necesitas en total?</label>
     <mat-slider   
@@ -35,11 +38,19 @@
 
       <div>
         Agrega tu causa
-        <button mat-flat-button style="background-color: #20AD76; color: white;">+</button>
+        <button mat-flat-button (click)="addCause()" style="background-color: #20AD76; color: white;">+</button>
 
       </div>
     </div>
 
+    <button mat-raised-button color="primary" (click)="showCommunity()">Next</button>
+
+  </div>
+
+
+  <!--COMMUNITY-->
+  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" *ngIf="!showingCause">
+    <p>Lo mismo pero con community</p>
   </div>
 
 
