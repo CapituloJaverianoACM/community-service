@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  commuServiceLogoPath: 'assets/images/community_service_logo.svg',
   logoPath: 'assets/images/acm_logo.png'
 };
 

@@ -14,6 +14,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { FooterComponent } from './components/footer/footer.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
+
+import { faCoffee, fas } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -35,7 +40,10 @@ import { FooterComponent } from './components/footer/footer.component';
     MatToolbarModule,
     FlexLayoutModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule,
+    MatIconModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
