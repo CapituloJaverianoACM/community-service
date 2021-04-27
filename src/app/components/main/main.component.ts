@@ -3,14 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSliderChange } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
-import { Router } from '@angular/router';
 import { Cause } from 'src/app/model/cause';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-import { CommunityService } from '../../services/community.service';
-import { Community } from '../../model/community';
 
 import { CommunityService } from '../../services/community.service';
 import { Community } from '../../model/community';
@@ -122,9 +117,6 @@ export class MainComponent implements OnInit {
   }
 
 }
-
-
-
 
 @Component({
   selector: 'dialog-new-cause',
