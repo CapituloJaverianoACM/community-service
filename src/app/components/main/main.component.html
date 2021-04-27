@@ -51,14 +51,14 @@
         <mat-radio-group
             aria-labelledby="example-radio-group-label"
             class="community-radio-group"
-            [(ngModel)]="favoriteSeason">
+            [(ngModel)]="chosenCommunity">
             <mat-radio-button class="community-radio-button" *ngFor="let community of communities" [value]="community">
                 {{community.name}}
             </mat-radio-button>
         </mat-radio-group>
         <div>
             Agrega tu Comunidad
-            <button mat-flat-button (click)="addCause()" style="background-color: #20AD76; color: white;">+</button>
+            <button mat-flat-button (click)="addCommunity()" style="background-color: #20AD76; color: white;">+</button>
         </div>
 
         <mat-slider

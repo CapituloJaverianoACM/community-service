@@ -22,6 +22,7 @@ export class MainComponent implements OnInit {
 
 
   public showingCause = true;
+  public chosenCommunity?: Community;
   public minMoney = 10000;
   public maxMoney = 10000000000;
   public display: number = this.minMoney;
@@ -82,8 +83,29 @@ export class MainComponent implements OnInit {
     });
   }
 
-  showCommunity(): void{
+  addCommunity(): void{
+    const dialogRef = this.dialog.open(DialogNewCommComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      result.size = +result.size;
+
+      this.communities.push(result);
+      this.communities.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+
+      console.log((this.communities));
+    });
+  }
+
+  showCommunity(): void {
     this.showingCause = false;
+  }
+
+  calculate(): void {
+      //TODO
   }
 
   showCauses(): void {
@@ -119,6 +141,33 @@ export class DialogNewCauseComponent {
         name: ['', Validators.required],
         budget: ['', [Validators.required, Validators.min(0)]],
         currency: ['', Validators.required]
+      });
+    }
+
+  onNoClick(): void {
+
+    this.dialogRef.close();
+  }
+
+}
+
+@Component({
+  selector: 'dialog-new-comm',
+  templateUrl: 'dialog_new_comm.html',
+  styleUrls: ['./main.component.scss']
+
+})
+export class DialogNewCommComponent {
+
+  public form: FormGroup;
+
+  public community: Community = {name: '', size: 0};
+  constructor(private fb: FormBuilder,
+              public dialogRef: MatDialogRef<DialogNewCommComponent>) {
+
+      this.form = this.fb.group({
+        name: ['', Validators.required],
+        size: ['', [Validators.required, Validators.min(0)]]
       });
     }
 

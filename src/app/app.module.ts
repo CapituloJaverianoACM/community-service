@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { DialogNewCauseComponent, MainComponent } from './components/main/main.component';
+import { DialogNewCauseComponent, DialogNewCommComponent, MainComponent } from './components/main/main.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -29,7 +29,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ToolbarComponent,
     MainComponent,
     FooterComponent,
-    DialogNewCauseComponent
+    DialogNewCauseComponent,
+    DialogNewCommComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,8 @@ import {MatDialogModule} from '@angular/material/dialog';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogNewCauseComponent
+    DialogNewCauseComponent,
+    DialogNewCommComponent
   ],
 })
 export class AppModule { }
