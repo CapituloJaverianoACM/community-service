@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommunityService } from '../../services/community.service';
 import { Community } from '../../model/community';
 
+import { CommunityService } from '../../services/community.service';
+import { Community } from '../../model/community';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
