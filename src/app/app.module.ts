@@ -18,6 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import {MatDialogModule} from '@angular/material/dialog';
+import { BillComponent } from './components/bill/bill.component';
 
 
 
@@ -28,7 +29,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ToolbarComponent,
     MainComponent,
     FooterComponent,
-    DialogNewCauseComponent
+    DialogNewCauseComponent,
+    BillComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+#trophy{
+  animation: trophy 1s ease;
+  size: 0ch;
+}
+
+@keyframes trophy{
+    from{
+        transform: rotateZ(10deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
