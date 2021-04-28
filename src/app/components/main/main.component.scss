@@ -1,5 +1,8 @@
 @import 'src/ACM-theme.scss';
 
+#bills{
+    width:200px
+}
 
 #budget-slider{
     width: 100%;
@@ -19,7 +22,8 @@
 
 
 .section{
-    padding: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 

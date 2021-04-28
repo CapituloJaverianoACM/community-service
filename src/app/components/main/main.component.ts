@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Cause } from 'src/app/model/cause';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CauseService } from 'src/app/services/cause.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -15,32 +17,54 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class MainComponent implements OnInit {
 
+  public billsIllustrationPath = environment.billsIllustrationPath;
+
 
 
   public showingCause = true;
   public minMoney = 10000;
   public maxMoney = 10000000000;
   public display: number = this.minMoney;
-  public values: Cause[] = [{budget: 10000, name: 'una hamburguesa de Mc Donalds', currency: 'COP'},
-                  {budget: 30000, name: 'una botella de 750ml de nectar', currency: 'COP'}];
+  public values: Cause[];
+  public price = this.display;
 
 
   constructor(public dialog: MatDialog,
-              public currencyService: CurrencyService) { }
+              public currencyService: CurrencyService,
+              private causeService: CauseService) {
 
-  // uses the slider to update the display value logarithmicaly
-  updateBudget(event: MatSliderChange): void {
+    this.values = causeService.getAllCauses();
+  }
 
-    const num = event.value;
+  changeCause(c: Cause): void{
+    this.display = c.budget;
+
     const minv = Math.log(this.minMoney);
     const maxv = Math.log(this.maxMoney);
 
     // calculate adjustment factor
     const scale = (maxv - minv) / (this.maxMoney - this.minMoney);
 
-    this.display = Math.round( Math.exp(minv + scale * (num! - this.minMoney)));
-     // console.log(this.display);
+    this.price = ((Math.log(c.budget) - minv) / scale) + this.minMoney;
+    console.log(this.price);
+  }
 
+
+  // uses the slider to update the display value logarithmicaly
+  updateBudget(event: MatSliderChange): void {
+
+    console.log(event.value);
+    this.display = this.expo(event.value!);
+  }
+
+  private expo(num: number): number{
+    const minv = Math.log(this.minMoney);
+    const maxv = Math.log(this.maxMoney);
+
+    // calculate adjustment factor
+    const scale = (maxv - minv) / (this.maxMoney - this.minMoney);
+
+    return Math.round( Math.exp(minv + scale * (num! - this.minMoney)));
   }
 
   // returns the string that appears on top of the slider when it slides
@@ -53,7 +77,7 @@ export class MainComponent implements OnInit {
   result(money: number): string{
     let answer = this.values[0].name;
     this.values.forEach(element => {
-      if (element.budget < money){
+      if (element.budget <= money){
         answer = element.name;
       }
     });
