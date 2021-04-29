@@ -21,9 +21,12 @@ export class MainComponent implements OnInit {
 
   public showingCause = true;
   public chosenCommunity?: Community;
+  public minPopulation = 1;
+  public maxPopulation = 7794798739;
   public minMoney = 10000;
   public maxMoney = 10000000000;
   public display: number = this.minMoney;
+  public popSize: number = this.minPopulation;
   public values: Cause[] = [{budget: 10000, name: 'una hamburguesa de Mc Donalds', currency: 'COP'},
                   {budget: 30000, name: 'una botella de 750ml de nectar', currency: 'COP'}];
   public communities: Community[] = [];
@@ -46,6 +49,19 @@ export class MainComponent implements OnInit {
     this.display = Math.round( Math.exp(minv + scale * (num! - this.minMoney)));
      // console.log(this.display);
 
+  }
+
+  // uses the slider to update the display value logarithmicaly
+  updatePopulation (event: MatSliderChange): void {
+
+    const num = event.value;
+    const minv = Math.log(this.minPopulation);
+    const maxv = Math.log(this.maxPopulation);
+
+    // calculate adjustment factor
+    const scale = (maxv - minv) / (this.maxPopulation - this.minPopulation);
+
+    this.popSize = Math.round( Math.exp(minv + scale * (num! - this.minPopulation)));
   }
 
   // returns the string that appears on top of the slider when it slides

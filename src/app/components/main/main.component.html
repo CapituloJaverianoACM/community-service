@@ -9,7 +9,7 @@
         <label class="text">¿Cuánto necesitas en total?</label>
         <mat-slider
             thumbLabel
-            id="budget-slider"
+            class="slider"
             min="1000" max="10000000000"
                        color="primary"
                        [displayWith]="formatLabel"
@@ -63,17 +63,17 @@
 
         <mat-slider
             thumbLabel
-            id="comm-slider"
+            class="slider"
             min="1" max="10000000000"
                     step="10000" value="1"
                                  color="primary"
                                  [displayWith]="formatLabel"
-                                 (input)="updateBudget($event)"></mat-slider>
+                                 (input)="updatePopulation($event)"></mat-slider>
 
         <div fxLayout="row" fxLayoutAlign="space-between center" >
             <div>1</div>
             <div>Personas</div>
-            <div>100.000.000.000</div>
+            <div>7.794.798.739</div>
         </div>
 
         <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >
