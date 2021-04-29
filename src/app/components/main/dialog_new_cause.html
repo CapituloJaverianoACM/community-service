@@ -28,7 +28,6 @@
 </form>
 </mat-dialog-content>
 
-{{form.status}}
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>
   <button mat-button [disabled]="form.status == 'INVALID'" [mat-dialog-close]="cause" cdkFocusInitial>Ok</button>

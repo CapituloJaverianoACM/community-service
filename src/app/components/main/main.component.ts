@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSliderChange } from '@angular/material/slider';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioChange, MatRadioModule } from '@angular/material/radio';
 import { Cause } from 'src/app/model/cause';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CauseService } from 'src/app/services/cause.service';
@@ -29,10 +29,11 @@ export class MainComponent implements OnInit {
   public maxPopulation = 7794798739;
   public minMoney = 10000;
   public maxMoney = 10000000000;
-  public display: number = this.minMoney;
-  public popSize: number = this.minPopulation;
+  public displayMoney: number = this.minMoney;
+  public displayPopSize: number = this.minPopulation;
   public values: Cause[];
-  public price = this.display;
+  public price = this.displayMoney;
+  public people = 1;
   public communities: Community[] = [];
 
 
@@ -42,10 +43,11 @@ export class MainComponent implements OnInit {
               private causeService: CauseService) {
 
     this.values = causeService.getAllCauses();
+
   }
 
   changeCause(c: Cause): void{
-    this.display = c.budget;
+    this.displayMoney = c.budget;
 
     const minv = Math.log(this.minMoney);
     const maxv = Math.log(this.maxMoney);
@@ -62,7 +64,7 @@ export class MainComponent implements OnInit {
   updateBudget(event: MatSliderChange): void {
 
     console.log(event.value);
-    this.display = this.expo(event.value!);
+    this.displayMoney = this.expo(event.value!);
   }
 
   private expo(num: number): number{
@@ -75,8 +77,28 @@ export class MainComponent implements OnInit {
     return Math.round( Math.exp(minv + scale * (num! - this.minMoney)));
   }
 
+
+  // puts the slider on the value corresponding to the population of the selected community size
+  handleCommunityChange(event: MatRadioChange): void{
+    this.displayPopSize = event.value.size;
+
+    const minv = Math.log(this.minPopulation);
+    const maxv = Math.log(this.maxPopulation);
+
+    // console.log(maxv);
+    // console.log(minv);
+    // calculate adjustment factor
+    const scale = (maxv - minv) / (this.maxPopulation - this.minPopulation);
+
+    this.people = ((Math.log(this.displayPopSize) - minv) / scale) + this.minPopulation;
+    // this.people = 1000000000;
+    console.log(this.people);
+
+  }
+
+
   // uses the slider to update the display value logarithmicaly
-  updatePopulation (event: MatSliderChange): void {
+  updatePopulation(event: MatSliderChange): void {
 
     const num = event.value;
     const minv = Math.log(this.minPopulation);
@@ -85,7 +107,7 @@ export class MainComponent implements OnInit {
     // calculate adjustment factor
     const scale = (maxv - minv) / (this.maxPopulation - this.minPopulation);
 
-    this.popSize = Math.round( Math.exp(minv + scale * (num! - this.minPopulation)));
+    this.displayPopSize = Math.round( Math.exp(minv + scale * (num! - this.minPopulation)));
   }
 
   // returns the string that appears on top of the slider when it slides
