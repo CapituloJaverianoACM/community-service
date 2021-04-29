@@ -88,12 +88,11 @@ export class MainComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      result.budget = +result.budget;
-      this.values.push(result);
-
-      this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
-      console.log((this.values));
+      if(result){
+        result.budget = +result.budget;
+        this.values.push(result);
+        this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
+      }
     });
   }
 
@@ -103,14 +102,11 @@ export class MainComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      result.size = +result.size;
-
-      this.communities.push(result);
-      this.communities.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
-
-      console.log((this.communities));
+      if(result){
+        result.size = +result.size;
+        this.communities.push(result);
+        this.communities.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+      }
     });
   }
 
