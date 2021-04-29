@@ -1,65 +1,92 @@
 <div fxLayout="row" fxLayoutAlign="space-evenly stretch">
 
-  <!--LEFT PANE-->
+    <!--LEFT PANE-->
 
-  <!--CAUSE-->
-  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" 
-    *ngIf="showingCause">
-    <label class="subtitle"> <b>Calcula...</b></label>
-    <label class="text">¿Cuánto necesitas en total?</label>
-    <mat-slider   
-      thumbLabel
-      id="budget-slider"
-      min="1000" max="10000000000"
-      step="10000" value="1"
-      color="primary"
-      [displayWith]="formatLabel"
-      (input)="updateBudget($event)"></mat-slider>
+    <!--CAUSE-->
+    <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch"
+                                                                 *ngIf="showingCause">
+        <label class="subtitle"> <b>Calcula...</b></label>
+        <label class="text">¿Cuánto necesitas en total?</label>
+        <mat-slider
+            thumbLabel
+            class="slider"
+            min="1000" max="10000000000"
+                       color="primary"
+                       [displayWith]="formatLabel"
+                       (input)="updateBudget($event)"></mat-slider>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-      <div>10.000</div>
-      <div>COP</div>
-      <div>100.000.000.000</div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div>10.000</div>
+            <div>COP</div>
+            <div>100.000.000.000</div>
+        </div>
+
+        <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >
+            <mat-form-field appearance="fill">
+                <mat-label>Selecciona una causa</mat-label>
+                <mat-select>
+                    <mat-option value="option">Salvar una ballena</mat-option>
+                    <mat-option value="option">Darle de comer a un niño</mat-option>
+                    <mat-option value="option">Darle educacion a un niño</mat-option>
+                    <mat-option value="option">Construir un colegio</mat-option>
+                    <mat-option value="option">Acabar con el hambre mundial</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                Agrega tu causa
+                <button mat-flat-button (click)="addCause()" style="background-color: #20AD76; color: white;">+</button>
+
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" >
+            <button mat-raised-button color="primary" (click)="showCommunity()">Continuar ></button>
+        </div>
     </div>
 
+    <!--COMMUNITY-->
+    <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" *ngIf="!showingCause">
+        <label class="subtitle"><strong>Calcula...</strong></label>
+        <label class="text">¿Cuántas personas necesitas en total?</label>
+        <label id="example-radio-group-label">Selecciona una Comunidad:</label>
+        <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="community-radio-group"
+            [(ngModel)]="chosenCommunity">
+            <mat-radio-button class="community-radio-button" *ngFor="let community of communities" [value]="community">
+                {{community.name}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <div>
+            Agrega tu Comunidad
+            <button mat-flat-button (click)="addCommunity()" style="background-color: #20AD76; color: white;">+</button>
+        </div>
 
-    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >      
+        <mat-slider
+            thumbLabel
+            class="slider"
+            min="1" max="10000000000"
+                    step="10000" value="1"
+                                 color="primary"
+                                 [displayWith]="formatLabel"
+                                 (input)="updatePopulation($event)"></mat-slider>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Selecciona una causa</mat-label>
-        <mat-select>
-          <mat-option value="option">Salvar una ballena</mat-option>
-          <mat-option value="option">Darle de comer a un niño</mat-option>
-          <mat-option value="option">Darle educacion a un niño</mat-option>
-          <mat-option value="option">Construir un colegio</mat-option>
-          <mat-option value="option">Acabar con el hambre mundial</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
+            <div>1</div>
+            <div>Personas</div>
+            <div>7.794.798.739</div>
+        </div>
 
-      <div>
-        Agrega tu causa
-        <button mat-flat-button (click)="addCause()" style="background-color: #20AD76; color: white;">+</button>
+        <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >
+            <button mat-raised-button color="primary" (click)="showCauses()">Regresar</button>
+            <button mat-raised-button color="primary" (click)="calculate()">Calcular</button>
+        </div>
 
-      </div>
     </div>
 
-    <button mat-raised-button color="primary" (click)="showCommunity()">Next</button>
-
-  </div>
-
-
-  <!--COMMUNITY-->
-  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" *ngIf="!showingCause">
-    <p>Lo mismo pero con community</p>
-  </div>
-
-
-
-
-  <!--RIGHT PANE-->
-  <div class="section" fxLayout="column" fxFlex="50" fxLayoutAlign="space-around center">
-    <p color="accent" id="display_value"> {{display  | currency:' ' : 'symbol' : '1.0-0'}} </p>
-    <span> Alcanza para {{result(display!)}} </span>
-  </div>
+    <!--RIGHT PANE-->
+    <div class="section" fxLayout="column" fxFlex="50" fxLayoutAlign="space-around center">
+        <p color="accent" id="display_value"> {{display  | currency:' ' : 'symbol' : '1.0-0'}} </p>
+        <span> Alcanza para {{result(display!)}} </span>
+    </div>
 
 </div>
