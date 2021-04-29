@@ -4,10 +4,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatSliderChange } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { Cause } from 'src/app/model/cause';
-import { CurrencyService } from 'src/app/services/currency.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommunityService } from '../../services/community.service';
+import { CurrencyService } from '../../services/currency.service';
 import { Community } from '../../model/community';
 
 @Component({
@@ -18,7 +18,7 @@ import { Community } from '../../model/community';
 export class MainComponent implements OnInit {
 
 
-
+  public currentExchange: number = 3600;
   public showingCause = true;
   public chosenCommunity?: Community;
   public minPopulation = 1;
@@ -129,6 +129,11 @@ export class MainComponent implements OnInit {
   // TODO: llamar al currency service para que convierta de USD a COP
   ngOnInit(): void {
       this.communities = this.communitiesService.getCommunities();
+      this.currencyService.getExchangeRate().subscribe((exchange) => {
+          console.log(exchange);
+          this.currentExchange = +exchange.USD_COP;
+          console.log(this.currentExchange);
+      });
 
   }
 
