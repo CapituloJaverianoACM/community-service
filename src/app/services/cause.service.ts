@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cause } from '../model/cause';
-import data from '/Users/camiloserrano/Documents/universidad/acm/desarrollo web/commu-service/src/assets/causes.json';
+import data from 'src/assets/causes.json';
 
 const filePath = 'src/assets/causes.json';
 
