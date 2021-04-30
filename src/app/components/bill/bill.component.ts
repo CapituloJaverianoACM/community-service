@@ -11,16 +11,6 @@ export class BillComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} 
 
-@Component({
-  selector: 'animation',
-  templateUrl: './animation.html',
-  styleUrls: ['./bill.component.scss']
-})
-export class Animation implements OnInit {
-  constructor() { }
-  ngOnInit(): void {
-  }
 
-}

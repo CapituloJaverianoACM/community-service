@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BillComponent } from './components/bill/bill.component';
+import { AnimationComponent } from './components/animation/animation.component';
 
 
 
@@ -30,7 +31,8 @@ import { BillComponent } from './components/bill/bill.component';
     MainComponent,
     FooterComponent,
     DialogNewCauseComponent,
-    BillComponent
+    BillComponent,
+    AnimationComponent
   ],
   imports: [
     BrowserModule,
