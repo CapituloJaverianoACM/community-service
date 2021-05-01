@@ -22,29 +22,39 @@ export class MainComponent implements OnInit {
   public billsIllustrationPath = environment.billsIllustrationPath;
 
 
-  public currentExchange: number = 3600;
-  public showingCause = true;
+
+  // BUDGET
+  public currentExchange = 3600;
+  // base values for money boundaries in COP
+  private minAbsoluteMoney = 10000;
+  private maxAbsoluteMoney = 10000000000;
+  public minMoney = this.minAbsoluteMoney;
+  public maxMoney = this.maxAbsoluteMoney;
+  public displayMoney: number = this.minMoney;
+  public values: Cause[] = [];
+  public price = this.displayMoney;
+  // TODO: change this values with a select under the slider
+  public selectedCurrency = 'COP';
+
+  // COMMUNITIES
   public chosenCommunity?: Community;
   public minPopulation = 1;
-  public maxPopulation = 7794798739;
-  public minMoney = 10000;
-  public maxMoney = 10000000000;
-  public displayMoney: number = this.minMoney;
   public displayPopSize: number = this.minPopulation;
-  public values: Cause[];
-  public price = this.displayMoney;
   public people = 1;
+  public maxPopulation = 7794798739;
   public communities: Community[] = [];
+
+
+
+  public showingCause = true;
+
 
 
   constructor(public dialog: MatDialog,
               public currencyService: CurrencyService,
               public communitiesService: CommunityService,
-              private causeService: CauseService) {
+              private causeService: CauseService) {}
 
-    this.values = causeService.getAllCauses();
-
-  }
 
   changeCause(c: Cause): void{
     this.displayMoney = c.budget;
@@ -59,11 +69,53 @@ export class MainComponent implements OnInit {
     console.log(this.price);
   }
 
+    // changes the selected currency
+    changeCurrency(curr: string): void{
+      // ignore if the currency didnt change
+      if (this.selectedCurrency === curr){
+        return;
+      }
+      // console.log(this.price);
+      this.selectedCurrency = curr;
+      let updatedBudget = 0;
+      if (curr === 'COP'){
+        this.minMoney = this.minAbsoluteMoney;
+        this.maxMoney = this.maxAbsoluteMoney;
+        updatedBudget = this.displayMoney * this.currentExchange;
+        this.price = this.price * this.currentExchange;
+
+        // updates cause array
+        this.values.forEach(val => {
+          val.budget *= this.currentExchange;
+          val.currency = 'COP';
+        });
+
+      }
+      else if (curr === 'USD'){
+        this.minMoney = this.minAbsoluteMoney / this.currentExchange;
+        this.maxMoney = this.maxAbsoluteMoney / this.currentExchange;
+        updatedBudget = this.displayMoney / this.currentExchange;
+        this.price = this.price / this.currentExchange;
+
+        // updates cause array
+        this.values.forEach(val => {
+          val.budget /= this.currentExchange;
+          val.currency = 'USD';
+        });
+      }
+
+
+      console.log(this.values);
+      this.displayMoney = updatedBudget;
+
+
+    }
+
 
   // uses the slider to update the display value logarithmicaly
   updateBudget(event: MatSliderChange): void {
 
-    console.log(event.value);
+    // console.log(event.value);
     this.displayMoney = this.expo(event.value!);
   }
 
@@ -77,6 +129,42 @@ export class MainComponent implements OnInit {
     return Math.round( Math.exp(minv + scale * (num! - this.minMoney)));
   }
 
+
+
+  // returns the string that appears on top of the slider when it slides
+  formatLabel(value: number): string {
+    return '';
+  }
+
+  // upperbound on array
+  // TODO: do it with binary search
+  result(money: number): string{
+    let answer = this.values[0].name;
+    this.values.forEach(element => {
+      if (element.budget <= money){
+
+        answer = element.name;
+      }
+    });
+
+    return answer;
+  }
+
+
+
+  addCause(): void{
+    const dialogRef = this.dialog.open(DialogNewCauseComponent, {
+      width: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        result.budget = +result.budget;
+        this.values.push(result);
+        this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
+      }
+    });
+  }
 
   // puts the slider on the value corresponding to the population of the selected community size
   handleCommunityChange(event: MatRadioChange): void{
@@ -108,38 +196,6 @@ export class MainComponent implements OnInit {
     const scale = (maxv - minv) / (this.maxPopulation - this.minPopulation);
 
     this.displayPopSize = Math.round( Math.exp(minv + scale * (num! - this.minPopulation)));
-  }
-
-  // returns the string that appears on top of the slider when it slides
-  formatLabel(value: number): string {
-    return '';
-  }
-
-  // upperbound on array
-  // TODO: do it with binary search
-  result(money: number): string{
-    let answer = this.values[0].name;
-    this.values.forEach(element => {
-      if (element.budget <= money){
-        answer = element.name;
-      }
-    });
-
-    return answer;
-  }
-
-  addCause(): void{
-    const dialogRef = this.dialog.open(DialogNewCauseComponent, {
-      width: '300px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        result.budget = +result.budget;
-        this.values.push(result);
-        this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
-      }
-    });
   }
 
   addCommunity(): void{
@@ -175,6 +231,19 @@ export class MainComponent implements OnInit {
           console.log(exchange);
           this.currentExchange = +exchange.USD_COP;
           console.log(this.currentExchange);
+
+
+          this.values = this.causeService.getAllCauses();
+
+          // converts all causes to COP
+          this.values.forEach(val => {
+            if (val.currency === 'USD'){
+              val.budget = val.budget * this.currentExchange;
+              val.currency = 'COP';
+            }
+          });
+          // sorts the array
+          this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
       });
 
   }

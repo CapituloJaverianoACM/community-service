@@ -1,7 +1,12 @@
 @import 'src/ACM-theme.scss';
 
 #bills{
-    width:200px
+    width:250px
+}
+
+
+#main_div{
+    min-height: 90%;
 }
 
 .slider{
@@ -14,6 +19,14 @@
     font-family: Montserrat;
     color: mat-color($ACM-theme-accent, default);
     font-size: 80px;
+    margin-top: 0;
+}
+
+#display_currency{
+    font-family: Montserrat;
+    color: mat-color($ACM-theme-accent, default);
+    font-size: 40px;
+    margin-top: 0;
 }
 
 #left{
@@ -32,6 +45,7 @@
     margin: 20px;
 }
 
-.text{
-    margin: 20px;
+
+.content{
+    margin-bottom: 20px;;
 }

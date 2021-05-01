@@ -18,7 +18,6 @@ export class CauseService {
   constructor() {}
 
 
-  // TODO: read from text file
   getAllCauses(): Cause[]{
     let causeArray: Cause[] = [];
     try{
@@ -28,6 +27,9 @@ export class CauseService {
       console.log('the file contains errors');
       console.log(e);
     }
+
+
+    causeArray.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
 
     return causeArray;
   }
