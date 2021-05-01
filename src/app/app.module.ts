@@ -18,6 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 import { BillComponent } from './components/bill/bill.component';
 import { AnimationComponent } from './components/animation/animation.component';
 
@@ -32,7 +33,7 @@ import { AnimationComponent } from './components/animation/animation.component';
     FooterComponent,
     DialogNewCauseComponent,
     BillComponent,
-    AnimationComponent
+    AnimationComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { AnimationComponent } from './components/animation/animation.component';
     FontAwesomeModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],
