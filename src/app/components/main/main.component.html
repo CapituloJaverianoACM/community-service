@@ -1,31 +1,40 @@
 
 
-<div fxLayout="row" fxLayoutAlign="space-evenly stretch">
+<div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="main_div">
 
   <!--LEFT PANE-->
 
   <!--CAUSE-->
-  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="space-around stretch" 
-    *ngIf="showingCause">
+  <div class="section" id="left" fxFlex="50" fxLayout="column" fxLayoutAlign="start stretch" 
+    *ngIf="showingCause" >
     <label class="subtitle"> <b>Calcula...</b></label>
-    <label class="text">¿Cuánto necesitas en total?</label>
+    <label class="content">¿Cuánto necesitas en total?</label>
     <mat-slider   
       thumbLabel
       id="budget-slider"
-      min="1000" max="10000000000"
+      [min]="minMoney" [max]="maxMoney"
       color="primary"
-      [ngModel]="price"
+      [(ngModel)]="price"
       [displayWith]="formatLabel"
       (input)="updateBudget($event)"></mat-slider>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
-      <div>10.000</div>
-      <div>COP</div>
-      <div>100.000.000.000</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="content">
+      <div>{{minMoney  | currency:' ' : 'symbol' : '1.0-0'}}</div>
+      <div>
+        <mat-form-field>
+        <mat-label  >{{selectedCurrency}}</mat-label>
+        <mat-select >
+          <mat-option  (click)="changeCurrency('COP')" >COP</mat-option>
+          <mat-option  (click)="changeCurrency('USD')" >USD</mat-option>
+
+        </mat-select>
+        </mat-form-field>
+      </div>
+      <div>{{maxMoney  | currency:' ' : 'symbol' : '1.0-0'}}</div>
     </div>
 
 
-    <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >      
+    <div  fxLayout="row" fxLayoutAlign="space-between center" class="content">      
 
       <mat-form-field appearance="fill">
         <mat-label>Selecciona una causa</mat-label>
@@ -92,7 +101,7 @@
 
   <!--RIGHT PANE-->
   <div class="section" fxLayout="column" fxFlex="50" fxLayoutAlign="space-around center">
-      <p color="accent" id="display_value"> {{displayMoney  | currency:' ' : 'symbol' : '1.0-0'}} </p>
+      <p><a color="accent" id="display_value"> {{displayMoney  | currency:' ' : 'symbol' : '1.0-0'}} </a> <a id="display_currency">{{selectedCurrency}}</a> </p>
       <img [src]="billsIllustrationPath" id="bills">
 
       <span> Alcanza para {{result(displayMoney!)}} </span>
