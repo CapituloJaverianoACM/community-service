@@ -22,4 +22,11 @@
 
 #login-button{
     margin-right: 30px;
+
+}
+
+mat-toolbar{
+    z-index: 900;
+    background-color: white;
+    position: fixed;
 }

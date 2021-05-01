@@ -224,6 +224,11 @@ export class MainComponent implements OnInit {
       this.showingCause = true;
   }
 
+  // TODO: usar el router para ir a la pagina de la factura
+  navigateToDetails(): void{
+
+  }
+
   // TODO: llamar al currency service para que convierta de USD a COP
   ngOnInit(): void {
       this.communities = this.communitiesService.getCommunities();
