@@ -105,8 +105,12 @@
       <img [src]="billsIllustrationPath" id="bills">
 
       <span> Alcanza para {{result(displayMoney!)}} </span>
+      <!--TODO: quitar estas dos variables, solo es para visualizar y hacer pruebas
       <span> Popsize = {{displayPopSize}}</span>
       <span> people = {{people}}</span>
+      -->
+
+      <button mat-raised-button color="primary" (click)="navigateToDetails()">Detalles</button>
 
   </div>
 
