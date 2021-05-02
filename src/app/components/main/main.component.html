@@ -93,6 +93,7 @@
       </div>
 
       <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >
+            <!--TODO: quitar estos botones y hacerlo con carousel-->
           <button mat-raised-button color="primary" (click)="showCauses()">Regresar</button>
           <button mat-raised-button color="primary" (click)="calculate()">Calcular</button>
       </div>
@@ -103,15 +104,16 @@
   <div class="section" fxLayout="column" fxFlex="50" fxLayoutAlign="space-around center">
       <p><a color="accent" id="display_value"> {{displayMoney  | currency:' ' : 'symbol' : '1.0-0'}} </a> <a id="display_currency">{{selectedCurrency}}</a> </p>
       <img [src]="billsIllustrationPath" id="bills">
+      <div  fxLayout="row" fxLayoutAlign="end center" id="next_div">
+        <button mat-raised-button color="primary" (click)="navigateToDetails()" *ngIf="!showingCause">Detalles</button>
+      </div>
 
       <span> Alcanza para {{result(displayMoney!)}} </span>
       <!--TODO: quitar estas dos variables, solo es para visualizar y hacer pruebas
       <span> Popsize = {{displayPopSize}}</span>
       <span> people = {{people}}</span>
       -->
-
-      <button mat-raised-button color="primary" (click)="navigateToDetails()">Detalles</button>
-
+      
   </div>
 
 </div>
