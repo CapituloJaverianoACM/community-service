@@ -7,17 +7,26 @@
               <mat-card-subtitle class="total">Total factura</mat-card-subtitle>
               <mat-card-title class="money">30,000 COP</mat-card-title>
             </mat-card-header>
+
             <div class="content">
             <mat-card-content>
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-              </p>
+            <div class="community">
+                <img [src]="communityBillPath" id="commu">
+                <p class="txtComm">Tu comunidad _________ tiene</p>
+                <p>30 Personas</p>
+            </div>
+            <div class="people">
+                <img [src]="boyPath" id="boy">
+                <p class="txtPe">Cada persona aporta</p>
+                <p>1,000 COP</p>
+            </div>
+
+            <h4>¡Para ___________ !</h4>
+            
             </mat-card-content>
 
             <mat-card-actions>
-              <button mat-button>Descargar</button>
+                <button mat-raised-button color="primary" class="button">Descargar</button>
             </mat-card-actions>
             </div>
         </mat-card>

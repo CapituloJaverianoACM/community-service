@@ -1,3 +1,5 @@
+@import 'src/ACM-theme.scss';
+
 .card {
     width: 300px;
     height: 500px;
@@ -30,15 +32,51 @@
   }
   
   .card{
-    
+    background-image: url('/assets/images/grayCard.svg');
     background-repeat: no-repeat;
-    background-size: 00px 300px; 
-  
-    
+    background-position: bottom;
+    background-size: 102%; 
+    background-position-y: top 135px;
+
   }
   
   .bill{
-
-      background-image: url "src/assets/images/grayCard.svg";
       padding-bottom: 100px;
+  }
+
+
+  .community, .people{
+    padding: 15px;
+    background-color: #EBE5E5;
+    margin-top: 20px !important;
+    border-radius: 30px ;
+
+  }
+  #commu, #boy{
+      float: right;
+  }
+
+  #commu{
+      width: 20%;
+  }
+
+  #boy{
+      width: 25%;
+  }
+
+  .txtComm, .txtPe{
+    color: mat-color($ACM-theme-primary, default);
+  }
+
+  h4{
+    display: flex;
+    justify-content: center;
+    color: mat-color($ACM-theme-primary, default);
+  }
+
+  .button{
+    display: flex;
+    float: right;
+    margin-right: 10px !important;
+    margin-top: 29px !important;
   }
