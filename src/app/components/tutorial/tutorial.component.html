@@ -1,0 +1,52 @@
+<div fxLayout="column" fxLayoutAlign="space-evenly center" id="main_div">
+    <!--Contains text and the image-->
+    <div fxLayout="row" fxLayoutAlign="space-around center" >
+        
+        <!--conatins subtitle and text-->
+        <div fxLayout="column" class="section">
+
+        
+            <label class="subtitle"><strong>Community service</strong></label>
+            <label>
+                Con esta herramienta puedes calcular cuánto necesita aportar cada
+                persona si se unen para lograr una meta en común!
+            </label>
+        </div>
+
+        <img [src]="tutorialIllustrationPath" id="tutorial_image">
+
+
+    </div>
+    <mat-card >
+        <mat-tab-group animationDuration="1000ms">
+            <mat-tab label="Selecciona la meta" fxLayout="column" fxLayoutAlign="center center" >
+                <div class="tutorial_tab" fxLayout="row" fxLayoutAlign="space-evenlycenter">
+                    <mat-slider   
+                    thumbLabel
+                    id="example_slider"
+                    [min]="1" [max]="1000"
+                    [value]="val"
+                    color="primary"
+                    [displayWith]="formatLabel"></mat-slider>
+
+                    <label>Mueve el Slider para cambiar el presupuesto y explorar metas predeterminadas.</label>
+
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+                    <button mat-raised-button class="add_button">+</button>
+
+                    <label>O agrega tus propias metas.</label>
+
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Selecciona la comunidad">Content 2</mat-tab>
+            <mat-tab label="Calcula">Content 3</mat-tab>
+          </mat-tab-group>
+    </mat-card>
+
+
+    <button mat-raised-button color="primary" [routerLink] = "'/main'">Start</button>
+
+</div>

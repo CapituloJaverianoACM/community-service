@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { CommunityService } from '../../services/community.service';
 import { CurrencyService } from '../../services/currency.service';
 import { Community } from '../../model/community';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-main',
@@ -252,6 +253,20 @@ export class MainComponent implements OnInit {
       });
 
   }
+  // to download an image
+  /*
+  downloadImage(): void{
+    var container = document.getElementById("left"); //specific element on page
+    html2canvas(container!).then(function(canvas) {
+      let link = document.createElement('a');
+      document.body.appendChild(link);
+      link.download = "html_image.png";
+      link.href = canvas.toDataURL("image/png");
+      link.target = '_blank';
+      link.click();
+  });
+
+  }*/
 
 }
 

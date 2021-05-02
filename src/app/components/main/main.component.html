@@ -45,13 +45,14 @@
 
       <div>
         Agrega tu causa
-        <button mat-flat-button (click)="addCause()" style="background-color: #20AD76; color: white;">+</button>
+        <button mat-flat-button (click)="addCause()" class="add_button">+</button>
 
       </div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="end center" >
       <button mat-raised-button color="primary" (click)="showCommunity()">Continuar ></button>
+      <!--<button mat-raised-button color="primary" (click)="downloadImage()">Download image ></button>-->
     </div>
   </div>
 
@@ -72,7 +73,7 @@
 
       <div>
           Agrega tu Comunidad
-          <button mat-flat-button (click)="addCommunity()" style="background-color: #20AD76; color: white;">+</button>
+          <button mat-flat-button (click)="addCommunity()" class="add_button">+</button>
       </div>
 
       <mat-slider

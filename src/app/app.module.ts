@@ -20,6 +20,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -31,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     MainComponent,
     FooterComponent,
     DialogNewCauseComponent,
-    DialogNewCommComponent
+    DialogNewCommComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],
