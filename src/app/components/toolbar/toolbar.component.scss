@@ -1,11 +1,11 @@
 #nav_logo{
     
-    height: 100%;
+    height: 90%;
 }
 
 #nav_commu_logo{
     
-    height: 60%;
+    width: 25%;
 }
 
 .spacer {
@@ -14,10 +14,19 @@
 
 #tool_bar{
     height: 100px;
-    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
     background-color: white;
 }
 
 #login-button{
     margin-right: 30px;
+
+}
+
+mat-toolbar{
+    z-index: 900;
+    background-color: white;
+    position: fixed;
 }
