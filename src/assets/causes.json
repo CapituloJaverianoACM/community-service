@@ -1,0 +1,17 @@
+[   
+    {
+        "name": "Hamburguesa de Mc Donals's",
+        "budget": 10000,
+        "currency": "COP"
+    },
+    {
+        "budget": 30000,
+        "name": "una botella de 750ml de nectar",
+        "currency": "COP"
+    },
+    {
+        "budget": 80000000,
+        "name": "Construir una escuela",
+        "currency": "COP"
+    }
+]
