@@ -11,6 +11,8 @@ export class BillComponent implements OnInit {
   public piggyPath = environment.piggyPath;
   public communityBillPath = environment.communityBillPath;
   public boyPath = environment.boyPath;
+
+  public grayCardPath = environment.grayCardPath;
   constructor() { }
 
   ngOnInit(): void {

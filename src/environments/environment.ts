@@ -9,7 +9,8 @@ export const environment = {
   piggyPath: 'assets/images/piggy.svg',
   communityBillPath: 'assets/images/communityBill.svg',
   boyPath: 'assets/images/boy.svg',
-  billsIllustrationPath: 'assets/images/bills_illustration.svg'
+  billsIllustrationPath: 'assets/images/bills_illustration.svg',
+  grayCardPath: '/assets/images/grayCard.svg',
 };
 
 /*
