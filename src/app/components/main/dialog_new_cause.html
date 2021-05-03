@@ -30,5 +30,5 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [disabled]="form.status == 'INVALID'" [mat-dialog-close]="cause" cdkFocusInitial>Ok</button>
+  <button mat-raised-button class="add_button" [disabled]="form.status == 'INVALID'" [mat-dialog-close]="cause" cdkFocusInitial>Ok</button>
 </div>

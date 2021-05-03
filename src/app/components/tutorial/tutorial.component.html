@@ -1,0 +1,80 @@
+<div fxLayout="column" fxLayoutAlign="space-evenly center" id="main_div">
+    <!--Contains text and the image-->
+    <div fxLayout="row" fxLayoutAlign="space-around center" >
+        
+        <!--conatins subtitle and text-->
+        <div fxLayout="column" fxLayoutAlign="start start"  class="section">
+
+        
+            <label class="subtitle"><strong>Community service</strong></label>
+            <label>
+                Con esta herramienta puedes calcular cuánto necesita aportar cada
+                persona si se unen para lograr una meta en común!
+            </label>
+
+            <button mat-raised-button color="primary" (click)="showTutorial()" *ngIf="!showTut">Ver tutorial</button>
+
+        </div>
+
+        <img [src]="tutorialIllustrationPath" id="tutorial_image">
+
+
+    </div>
+    <mat-card *ngIf="showTut" style="min-height: 100px;">
+        <mat-tab-group animationDuration="1000ms" >
+            <mat-tab label="Selecciona la meta" fxLayout="column" fxLayoutAlign="center center" >
+                <div class="tutorial_tab" fxLayout="row" fxLayoutAlign="space-evenlycenter">
+                    <mat-slider   
+                    thumbLabel
+                    id="example_slider"
+                    [min]="1" [max]="1000"
+                    [(ngModel)]="val"
+                    color="primary"
+                    [displayWith]="formatLabel"></mat-slider>
+
+                    <label>Mueve el Slider para cambiar el presupuesto y explorar metas predeterminadas.</label>
+
+                </div>
+
+                <div  class="tutorial_tab" fxLayout="row" fxLayoutAlign="space-evenly center" >
+                    <button mat-raised-button class="add_button">+</button>
+
+                    <label>O crea tus propias metas.</label>
+
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Selecciona la comunidad">
+                
+                <div class="tutorial_tab" fxLayout="row" fxLayoutAlign="space-evenlycenter">
+                    <mat-slider   
+                    thumbLabel
+                    id="example_slider"
+                    [min]="1" [max]="1000"
+                    [(ngModel)]="val"
+                    color="primary"
+                    [displayWith]="formatLabel"
+                    ></mat-slider>
+
+                    <label>Mueve el Slider para cambiar el tamaño de la comunidad que trabajará junta para lograr esta meta.</label>
+
+                </div>
+
+                <div  class="tutorial_tab" fxLayout="row" fxLayoutAlign="space-evenly center" >
+                    <button mat-raised-button class="add_button">+</button>
+
+                    <label>O crea tu propia comunidad.</label>
+
+                </div>
+            </mat-tab>
+            <mat-tab fxLayout="column" label="Calcula">
+                <div class="tutorial_tab">
+                    Recibe un resumen de cuánto debe aportar cada miembro de la camunidad seleccionada para lograr tu meta.
+                </div>
+                <button mat-raised-button color="primary" [routerLink]="'/main'">Comenzar</button>
+                
+            </mat-tab>
+          </mat-tab-group>
+    </mat-card>
+
+</div>

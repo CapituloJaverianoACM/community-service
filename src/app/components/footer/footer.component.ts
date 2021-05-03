@@ -15,6 +15,17 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
+  navigateToFacebook(): void{
+    window.location.href = "https://www.facebook.com/acmjaveriana";
+  }
+
+  navigateToGithub(): void{
+    window.location.href = "https://github.com/CapituloJaverianoACM";
+  }
+
+  navigateToInstagram(): void{
+    window.location.href = "https://www.instagram.com/capitulojaveriano/";
+  }
   ngOnInit(): void {
   }
 
