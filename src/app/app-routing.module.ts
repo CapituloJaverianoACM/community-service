@@ -6,6 +6,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 const routes: Routes = [
   {path: 'main' , component: MainComponent},
   {path: '' , component: TutorialComponent},
+  // TODO: meter el path del componente de la factura
 ];
 
 @NgModule({

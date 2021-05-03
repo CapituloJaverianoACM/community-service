@@ -106,6 +106,7 @@
       <p><a color="accent" id="display_value"> {{displayMoney  | currency:' ' : 'symbol' : '1.0-0'}} </a> <a id="display_currency">{{selectedCurrency}}</a> </p>
       <img [src]="billsIllustrationPath" id="bills">
       <div  fxLayout="row" fxLayoutAlign="end center" id="next_div">
+        <!--TODO: llenar el metodo navigate to details -->
         <button mat-raised-button color="primary" (click)="navigateToDetails()" *ngIf="!showingCause">Detalles</button>
       </div>
 

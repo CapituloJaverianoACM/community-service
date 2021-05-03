@@ -11,8 +11,13 @@ import { environment } from 'src/environments/environment';
 export class TutorialComponent implements OnInit {
   public tutorialIllustrationPath = environment.tutorialIllustrationPath;
 
-  public val = 10;
+  public val = 190;
+  public showTut = false;
   constructor() { }
+
+  showTutorial(): void{
+    this.showTut = true;
+  }
 
 
   // returns the string that appears on top of the slider when it slides
