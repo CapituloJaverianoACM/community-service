@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { CommunityService } from '../../services/community.service';
 import { CurrencyService } from '../../services/currency.service';
 import { Community } from '../../model/community';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-main',
@@ -37,18 +38,19 @@ export class MainComponent implements OnInit {
   public selectedCurrency = 'COP';
 
   // COMMUNITIES
-  public chosenCommunity?: Community;
+  public chosenCommunity: Community = {name: '', size: 1};
   public minPopulation = 1;
   public displayPopSize: number = this.minPopulation;
   public people = 1;
   public maxPopulation = 7794798739;
   public communities: Community[] = [];
 
+  public selectedCause = '';
 
 
   public showingCause = true;
 
-
+  public calculation = 0;
 
   constructor(public dialog: MatDialog,
               public currencyService: CurrencyService,
@@ -146,10 +148,15 @@ export class MainComponent implements OnInit {
         answer = element.name;
       }
     });
-
+    this.selectedCause = answer;
     return answer;
   }
 
+  calculate(money: number, people: number): number {
+    
+    this.calculation = money / people;
+    return this.calculation;
+  }
 
 
   addCause(): void{
@@ -216,9 +223,6 @@ export class MainComponent implements OnInit {
     this.showingCause = false;
   }
 
-  calculate(): void {
-      //TODO
-  }
 
   showCauses(): void {
       this.showingCause = true;
@@ -252,6 +256,20 @@ export class MainComponent implements OnInit {
       });
 
   }
+  // to download an image
+  /*
+  downloadImage(): void{
+    var container = document.getElementById("left"); //specific element on page
+    html2canvas(container!).then(function(canvas) {
+      let link = document.createElement('a');
+      document.body.appendChild(link);
+      link.download = "html_image.png";
+      link.href = canvas.toDataURL("image/png");
+      link.target = '_blank';
+      link.click();
+  });
+
+  }*/
 
 }
 

@@ -43,13 +43,14 @@
 
       <div>
         Agrega tu causa
-        <button mat-flat-button (click)="addCause()" style="background-color: #20AD76; color: white;">+</button>
+        <button mat-flat-button (click)="addCause()" class="add_button">+</button>
 
       </div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="end center" >
       <button mat-raised-button color="primary" (click)="showCommunity()">Continuar ></button>
+      <!--<button mat-raised-button color="primary" (click)="downloadImage()">Download image ></button>-->
     </div>
   </div>
 
@@ -70,7 +71,7 @@
 
       <div>
           Agrega tu Comunidad
-          <button mat-flat-button (click)="addCommunity()" style="background-color: #20AD76; color: white;">+</button>
+          <button mat-flat-button (click)="addCommunity()" class="add_button">+</button>
       </div>
 
       <mat-slider
@@ -93,7 +94,7 @@
       <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >
             <!--TODO: quitar estos botones y hacerlo con carousel-->
           <button mat-raised-button color="primary" (click)="showCauses()">Regresar</button>
-          <button mat-raised-button color="primary" (click)="calculate()">Calcular</button>
+
       </div>
 
   </div>
@@ -103,7 +104,8 @@
       <p><a color="accent" id="display_value"> {{displayMoney  | currency:' ' : 'symbol' : '1.0-0'}} </a> <a id="display_currency">{{selectedCurrency}}</a> </p>
       <img [src]="billsIllustrationPath" id="bills">
       <div  fxLayout="row" fxLayoutAlign="end center" id="next_div">
-        <button mat-raised-button color="primary" (click)="navigateToDetails()" *ngIf="!showingCause">Detalles</button>
+        <!--TODO: llenar el metodo navigate to details -->
+        <button mat-raised-button color="primary" [routerLink]="['/bill/',displayMoney,chosenCommunity.name,displayPopSize,selectedCause,selectedCurrency,calculate(displayMoney, displayPopSize)]" *ngIf="!showingCause">Detalles</button>
       </div>
 
       <span> Alcanza para {{result(displayMoney!)}} </span>

@@ -23,8 +23,8 @@ import { MatCardModule } from '@angular/material/card';
 import { BillComponent } from './components/bill/bill.component';
 import { AnimationComponent } from './components/animation/animation.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { TutorialComponent } from './components/tutorial/tutorial.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -34,9 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     MainComponent,
     FooterComponent,
     DialogNewCauseComponent,
+    DialogNewCommComponent,
+    TutorialComponent,
     BillComponent,
     AnimationComponent,
-    DialogNewCommComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +59,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatCardModule,
     HttpClientModule,
+    HttpClientModule,
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

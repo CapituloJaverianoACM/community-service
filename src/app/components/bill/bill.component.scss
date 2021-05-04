@@ -1,25 +1,26 @@
 @import 'src/ACM-theme.scss';
 
-.card {
+  .card {
     width: 300px;
     height: 500px;
-    float: right;
-    margin: 120px 200px 0 0;
+    margin: 120px 0 0 0;
     border-radius: 30px;
     background-color: #51B5E3;
-  }
+    box-shadow: unset !important;
+}
 
-  .total{
+
+  .total{ 
       width: 200px;
       margin-top: 20px;
       margin-bottom: 12px;
       color: #FFFF;
- 
   }
   
   .money{
     color: #FFFF;
   }
+
   .header{
       height: 110px;
       width: 100px;
@@ -32,7 +33,6 @@
   }
   
   .card{
-  
     background-image: url('/assets/images/grayCard.svg');
     background-repeat: no-repeat;
     background-position: bottom;
@@ -41,11 +41,6 @@
 
   }
   
-  .bill{
-      padding-bottom: 100px;
-  }
-
-
   .community, .people{
     padding: 15px;
     background-color: #EBE5E5;
@@ -79,5 +74,11 @@
     display: flex;
     float: right;
     margin-right: 10px !important;
-    margin-top: 29px !important;
+    margin-top: 10px !important;
+    box-shadow: unset !important;
   }
+
+app-animation{
+  margin-top: 200px;
+  width: 500px !important;
+}
