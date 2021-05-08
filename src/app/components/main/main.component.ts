@@ -44,12 +44,7 @@ export class MainComponent implements OnInit {
   public people = 1;
   public maxPopulation = 7794798739;
   public communities: Community[] = [];
-
-
-
   public showingCause = true;
-
-
 
   constructor(public dialog: MatDialog,
               public currencyService: CurrencyService,
@@ -197,6 +192,9 @@ export class MainComponent implements OnInit {
     const scale = (maxv - minv) / (this.maxPopulation - this.minPopulation);
 
     this.displayPopSize = Math.round( Math.exp(minv + scale * (num! - this.minPopulation)));
+
+    // resets radio button group
+    this.chosenCommunity = undefined;
   }
 
   addCommunity(): void{
@@ -265,7 +263,6 @@ export class MainComponent implements OnInit {
       link.target = '_blank';
       link.click();
   });
-
   }*/
 
 }
