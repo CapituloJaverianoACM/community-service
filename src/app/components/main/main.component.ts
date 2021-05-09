@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
   public selectedCurrency = 'COP';
 
   // COMMUNITIES
-  public chosenCommunity: Community = {name: '', size: 1};
+  public chosenCommunity?: Community = {name: '', size: 1};
   public minPopulation = 1;
   public displayPopSize: number = this.minPopulation;
   public people = 1;
