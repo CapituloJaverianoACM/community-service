@@ -1,5 +1,3 @@
-
-
 <div fxLayout="row" fxLayoutAlign="space-evenly stretch" id="main_div">
 
   <!--LEFT PANE-->
@@ -107,7 +105,7 @@
       <img [src]="billsIllustrationPath" id="bills">
       <div  fxLayout="row" fxLayoutAlign="end center" id="next_div">
         <!--TODO: llenar el metodo navigate to details -->
-        <button mat-raised-button color="primary" (click)="navigateToDetails()" *ngIf="!showingCause">Calcular</button>
+        <button mat-raised-button color="primary" [routerLink]="['/bill/',displayMoney,chosenCommunity!.name,displayPopSize,selectedCause,selectedCurrency,calculate(displayMoney, displayPopSize)]" *ngIf="!showingCause">Detalles</button>
       </div>
 
       <span> Alcanza para {{result(displayMoney!)}} </span>

@@ -1,0 +1,37 @@
+<div class="comp" fxLayout="row" fxLayoutAlign="space-around center">
+     
+    <div id="Bill">
+
+       <mat-card class="card">
+            <mat-card-header class="header">
+              <img mat-card-avatar [src]="piggyPath" id="piggy">
+              <mat-card-subtitle class="total">TOTAL FACTURA</mat-card-subtitle>
+              <mat-card-title class="money">{{budget  | currency:' ' : 'symbol' : '1.0-0'}} {{currency}}</mat-card-title>
+            </mat-card-header>
+
+            <div class="content">
+            <mat-card-content>
+            <div class="community">
+                <img [src]="communityBillPath" id="commu">
+                <p class="txtComm">Tu comunidad {{community}} tiene</p>
+                <p>{{people}} personas</p>
+            </div>
+            <div class="people">
+                <img [src]="boyPath" id="boy">
+                <p class="txtPe">Cada persona aporta</p>
+                <p>{{calculation | currency:' ' : 'symbol' : '1.0-1'}} {{currency}}</p>
+            </div>
+
+            <h4>¡Para {{cause}} !</h4>
+
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-raised-button (click)="downloadImage()" color="primary" class="button" *ngIf="showButton">Descargar</button>
+            </mat-card-actions>
+            </div>
+        </mat-card>
+    </div>
+    <app-animation></app-animation>
+
+</div>

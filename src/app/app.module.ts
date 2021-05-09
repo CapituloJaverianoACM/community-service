@@ -19,12 +19,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { BillComponent } from './components/bill/bill.component';
+import { AnimationComponent } from './components/animation/animation.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
-
-
 
 
 @NgModule({
@@ -35,7 +35,9 @@ import {MatCardModule} from '@angular/material/card';
     FooterComponent,
     DialogNewCauseComponent,
     DialogNewCommComponent,
-    TutorialComponent
+    TutorialComponent,
+    BillComponent,
+    AnimationComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,8 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatCardModule,
+    HttpClientModule,
     HttpClientModule,
     MatTabsModule,
     MatCardModule

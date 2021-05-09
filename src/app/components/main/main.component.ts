@@ -38,13 +38,18 @@ export class MainComponent implements OnInit {
   public selectedCurrency = 'COP';
 
   // COMMUNITIES
-  public chosenCommunity?: Community;
+  public chosenCommunity?: Community = {name: '', size: 1};
   public minPopulation = 1;
   public displayPopSize: number = this.minPopulation;
   public people = 1;
   public maxPopulation = 7794798739;
   public communities: Community[] = [];
+
+  public selectedCause = '';
+
   public showingCause = true;
+
+  public calculation = 0;
 
   constructor(public dialog: MatDialog,
               public currencyService: CurrencyService,
@@ -142,10 +147,14 @@ export class MainComponent implements OnInit {
         answer = element.name;
       }
     });
-
+    this.selectedCause = answer;
     return answer;
   }
 
+  calculate(money: number, people: number): number {
+    this.calculation = money / people;
+    return this.calculation;
+  }
 
 
   addCause(): void{
@@ -154,7 +163,7 @@ export class MainComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result){
         result.budget = +result.budget;
         this.values.push(result);
         this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
@@ -215,9 +224,6 @@ export class MainComponent implements OnInit {
     this.showingCause = false;
   }
 
-  calculate(): void {
-      //TODO
-  }
 
   showCauses(): void {
       this.showingCause = true;

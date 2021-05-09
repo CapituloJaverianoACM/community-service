@@ -1,0 +1,80 @@
+svg{
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes level1 {
+    from{
+    transform: translate(0px, -700px);
+    }
+    to{
+    transform: translate(0px, 0px);
+    }
+}
+
+@keyframes man {
+    from{
+    transform: translate(0px, -500px);
+    }
+    to{
+    transform: translate(0px, 0px);
+    }
+}
+
+@keyframes hand {
+    from{
+    transform: skewY(-2deg)
+    }
+    to{
+    transform: skewY(2deg)
+    }
+}
+
+@keyframes confetti {
+    from{
+        visibility: hidden;
+        }
+        to{
+        visibility: visible;
+        }
+}
+
+#level1{
+    animation: level1 1s ease-in-out;
+}
+
+#level2{
+    animation: level1 1.5s ease-in-out;
+}
+
+#level3{
+    animation: level1 2s ease-in-out;
+}
+
+#level4{
+    animation: level1 2.5s ease-in-out;
+}
+
+#level5{
+    animation: level1 3s ease-in-out;
+}
+
+#man{
+    animation: man 4s ease-in-out; 
+}
+
+#hand{
+    animation: hand 0.6s ease infinite;
+    transform-origin: 50% 50%;
+
+}
+
+#trophy{
+    animation: level1 3.5s ease-in-out;
+}
+
+#confetti{
+    visibility: hidden;
+    animation: level1 3.5s ease-in-out, 
+    confetti 2s ease-in-out 4s infinite;  
+}

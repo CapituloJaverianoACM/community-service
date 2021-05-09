@@ -6,6 +6,9 @@ export const environment = {
   production: false,
   commuServiceLogoPath: 'assets/images/community_service_logo.svg',
   logoPath: 'assets/images/acm_logo.png',
+  piggyPath: 'assets/images/piggy.svg',
+  communityBillPath: 'assets/images/communityBill.svg',
+  boyPath: 'assets/images/boy.svg',
   billsIllustrationPath: 'assets/images/bills_illustration.svg',
   tutorialIllustrationPath: 'assets/images/tutorial.svg'
 };

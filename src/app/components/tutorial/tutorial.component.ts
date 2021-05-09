@@ -19,7 +19,7 @@ export class TutorialComponent implements OnInit {
   async showTutorial(): Promise<void>{
     this.showTut = true;
     await new Promise(resolve => setTimeout(resolve, 100));
-    window.scrollTo(0, document.body.scrollHeight);
+    window.scroll({top:document.body.scrollHeight, behavior: 'smooth'});
     return;
     console.log('antes del delay');
     delay(1000);
