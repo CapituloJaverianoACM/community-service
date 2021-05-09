@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
@@ -15,8 +16,17 @@ export class TutorialComponent implements OnInit {
   public showTut = false;
   constructor() { }
 
-  showTutorial(): void{
+  async showTutorial(): Promise<void>{
     this.showTut = true;
+    await new Promise(resolve => setTimeout(resolve, 100));
+    window.scrollTo(0, document.body.scrollHeight);
+    return;
+    console.log('antes del delay');
+    delay(1000);
+    // const element = document.getElementById('tuto');
+    //element!.scrollIntoView();
+    window.scrollTo(0,document.body.scrollHeight);
+    console.log('despues del scroll');
   }
 
 

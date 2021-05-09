@@ -47,7 +47,6 @@ export class MainComponent implements OnInit {
 
   public selectedCause = '';
 
-
   public showingCause = true;
 
   public calculation = 0;
@@ -153,7 +152,6 @@ export class MainComponent implements OnInit {
   }
 
   calculate(money: number, people: number): number {
-    
     this.calculation = money / people;
     return this.calculation;
   }
@@ -165,7 +163,7 @@ export class MainComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result){
         result.budget = +result.budget;
         this.values.push(result);
         this.values.sort((a, b) => +a.budget < +b.budget ? -1 : +a.budget > +b.budget ? 1 : 0);
@@ -203,6 +201,9 @@ export class MainComponent implements OnInit {
     const scale = (maxv - minv) / (this.maxPopulation - this.minPopulation);
 
     this.displayPopSize = Math.round( Math.exp(minv + scale * (num! - this.minPopulation)));
+
+    // resets radio button group
+    this.chosenCommunity = undefined;
   }
 
   addCommunity(): void{
@@ -268,7 +269,6 @@ export class MainComponent implements OnInit {
       link.target = '_blank';
       link.click();
   });
-
   }*/
 
 }

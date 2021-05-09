@@ -59,7 +59,7 @@
       <label class="subtitle"><strong>Calcula...</strong></label>
       <label class="text">¿Cuántas personas necesitas en total?</label>
       <label id="example-radio-group-label">Selecciona una Comunidad:</label>
-      <mat-radio-group
+      <mat-radio-group #radio
           aria-labelledby="example-radio-group-label"
           class="community-radio-group"
           [(ngModel)]="chosenCommunity"
@@ -94,7 +94,6 @@
       <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" >
             <!--TODO: quitar estos botones y hacerlo con carousel-->
           <button mat-raised-button color="primary" (click)="showCauses()">Regresar</button>
-
       </div>
 
   </div>
@@ -102,6 +101,7 @@
   <!--RIGHT PANE-->
   <div class="section" fxLayout="column" fxFlex="50" fxLayoutAlign="space-around center">
       <p><a color="accent" id="display_value"> {{displayMoney  | currency:' ' : 'symbol' : '1.0-0'}} </a> <a id="display_currency">{{selectedCurrency}}</a> </p>
+      <label> Entre {{displayPopSize}} personas</label>
       <img [src]="billsIllustrationPath" id="bills">
       <div  fxLayout="row" fxLayoutAlign="end center" id="next_div">
         <!--TODO: llenar el metodo navigate to details -->

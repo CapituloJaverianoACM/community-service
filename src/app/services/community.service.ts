@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Community } from '../model/community';
 
+const filePath = 'src/assets/communities.json';
+
 @Injectable({
   providedIn: 'root'
 })

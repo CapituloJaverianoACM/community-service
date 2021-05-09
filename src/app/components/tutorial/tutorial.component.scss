@@ -1,10 +1,19 @@
-@import 'src/ACM-theme.scss';
 @import 'src/styles.scss';
+
+html{
+    scroll-behavior: smooth;
+}
 
 .section{
     padding: 30px;
     width: 40%;
 }
+
+.subtitle{
+    font-size: x-large;
+    margin: 20px;
+}
+
 
 #tutorial_image{
     width: 40%;
@@ -16,6 +25,10 @@
     min-height: 100px;
 }
 
+#tutorial_text{
+    font-size: large;
+    margin-bottom: 20px;
+}
 
 #example_slider{
     min-width: 50%;
@@ -23,4 +36,8 @@
  
 mat-card{
     width: 600px;
+}
+
+#tuto{
+    min-height: 100px;
 }
