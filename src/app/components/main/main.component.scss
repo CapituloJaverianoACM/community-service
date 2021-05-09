@@ -1,13 +1,7 @@
 @import 'src/ACM-theme.scss';
-
+@import 'src/styles.scss';
 #bills{
     width:250px
-}
-
-
-#main_div{
-    min-height: 80%;
-    padding-top: 120px;
 }
 
 #next_div{
@@ -43,13 +37,6 @@
     padding-right: 30px;
     padding-left: 30px;
 }
-
-
-.subtitle{
-    font-size: large;
-    margin: 20px;
-}
-
 
 .content{
     margin-bottom: 20px;;

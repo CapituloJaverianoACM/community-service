@@ -17,5 +17,5 @@
 
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancelar</button>
-    <button mat-button [disabled]="form.status == 'INVALID'" [mat-dialog-close]="community" cdkFocusInitial>Agregar</button>
+    <button mat-button class="add_button" [disabled]="form.status == 'INVALID'" [mat-dialog-close]="community" cdkFocusInitial>Agregar</button>
 </div>
