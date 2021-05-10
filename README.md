@@ -22,6 +22,14 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Building docker image
+
+Run `ng build --prod` to compile production code. By default, this compiled static code will be on dist/commu-service.
+
+Run `docker build -t commu-service:latest .` to build a docker image with the tag 'latest'.
+
+To run this image in a container called test, run `docker run -d -it -p 8080:80/tcp --name test commu-service:latest`
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
